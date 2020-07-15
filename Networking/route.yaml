@@ -1,0 +1,36 @@
+route.kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: cs-rest-route
+  namespace: tekton-pipelines
+  selfLink: /apis/route.openshift.io/v1/namespaces/tekton-pipelines/routes/cs-rest-route
+  uid: 68551be4-caa2-4602-aa13-15412cd2f864
+  resourceVersion: '34159942'
+  creationTimestamp: '2020-07-14T20:37:57Z'
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"route.openshift.io/v1","kind":"Route","metadata":{"annotations":{},"name":"cs-rest-route","namespace":"tekton-pipelines"},"spec":{"path":"/","port":{"targetPort":9000},"to":{"kind":"Service","name":"cs-rest-service"}}}
+    openshift.io/host.generated: 'true'
+spec:
+  host: >-
+    cs-rest-route-tekton-pipelines.cpat-dev-cp4a-git-639476-afb9c6047b062b44e3f1b3ecfeba4309-0000.us-south.containers.appdomain.cloud
+  path: /
+  to:
+    kind: Service
+    name: cs-rest-service
+    weight: 100
+  port:
+    targetPort: 9000
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: >-
+        cs-rest-route-tekton-pipelines.cpat-dev-cp4a-git-639476-afb9c6047b062b44e3f1b3ecfeba4309-0000.us-south.containers.appdomain.cloud
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2020-07-14T20:37:58Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: >-
+        cpat-dev-cp4a-git-639476-afb9c6047b062b44e3f1b3ecfeba4309-0000.us-south.containers.appdomain.cloud

@@ -1,0 +1,18 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  creationTimestamp: '2020-07-13T18:42:22Z'
+  generation: 1
+  name: cs-rest-backend
+  namespace: tekton-pipelines
+  resourceVersion: '33203566'
+  selfLink: >-
+    /apis/tekton.dev/v1alpha1/namespaces/tekton-pipelines/pipelineresources/cs-rest-backend
+  uid: 62572c04-dd6e-45aa-989e-4514715f3d76
+spec:
+  params:
+    - name: url
+      value: 'https://github.com/csamarchi/Restaraunt-Backend'
+    - name: revision
+      value: master
+  type: git

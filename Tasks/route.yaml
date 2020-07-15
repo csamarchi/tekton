@@ -1,0 +1,32 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  creationTimestamp: '2020-07-14T20:34:25Z'
+  generation: 1
+  name: cs-rest-backend-route
+  namespace: tekton-pipelines
+  resourceVersion: '34157538'
+  selfLink: >-
+    /apis/tekton.dev/v1alpha1/namespaces/tekton-pipelines/tasks/cs-rest-backend-route
+  uid: 6ef9c316-9c0e-4947-b621-3a97d655aad1
+spec:
+  steps:
+    - image: 'quay.io/openshift/origin-cli:latest'
+      name: oc
+      resources: {}
+      script: |
+        oc delete route cs-rest-route -n tekton-pipelines
+        cat << EOF | kubectl apply -n tekton-pipelines -f - 
+        kind: Route
+        apiVersion: route.openshift.io/v1
+        metadata:
+          name: cs-rest-route
+          namespace: tekton-pipelines
+        spec:
+          path: /
+          to:
+            kind: Service
+            name: cs-rest-service
+          port:
+            targetPort: 9000
+        EOF

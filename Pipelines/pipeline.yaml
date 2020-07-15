@@ -1,0 +1,52 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  creationTimestamp: '2020-07-13T19:08:16Z'
+  generation: 4
+  name: cs-backend-rest-pipeline
+  namespace: tekton-pipelines
+  resourceVersion: '34158594'
+  selfLink: >-
+    /apis/tekton.dev/v1alpha1/namespaces/tekton-pipelines/pipelines/cs-backend-rest-pipeline
+  uid: a5a25683-bbe0-42fe-8dd7-57eb192faea9
+spec:
+  resources:
+    - name: source
+      type: git
+    - name: image-node
+      type: image
+  tasks:
+    - name: build-and-push-cs-rest-backend
+      resources:
+        inputs:
+          - name: source
+            resource: source
+          - name: image-node
+            resource: image-node
+      taskRef:
+        kind: Task
+        name: build-and-push-cs-rest-backend
+    - name: cs-rest-backend-deployment
+      resources:
+        inputs:
+          - name: source
+            resource: source
+          - name: image-node
+            resource: image-node
+      runAfter:
+        - build-and-push-cs-rest-backend
+      taskRef:
+        kind: Task
+        name: cs-rest-backend-deployment
+    - name: cs-rest-backend-service
+      runAfter:
+        - cs-rest-backend-deployment
+      taskRef:
+        kind: Task
+        name: cs-rest-backend-service
+    - name: cs-rest-backend-route
+      runAfter:
+        - cs-rest-backend-deployment
+      taskRef:
+        kind: Task
+        name: cs-rest-backend-route

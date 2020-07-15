@@ -1,0 +1,43 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  creationTimestamp: '2020-07-13T18:56:28Z'
+  generation: 1
+  name: build-and-push-cs-rest-backend
+  namespace: tekton-pipelines
+  resourceVersion: '33212628'
+  selfLink: >-
+    /apis/tekton.dev/v1alpha1/namespaces/tekton-pipelines/tasks/build-and-push-cs-rest-backend
+  uid: c4a42a19-89f5-4206-a573-f965432319c2
+spec:
+  inputs:
+    resources:
+      - name: source
+        type: git
+      - name: image-node
+        type: image
+  steps:
+    - image: 'quay.io/buildah/stable:v1.11.0'
+      name: build-and-push-rest-backend
+      resources: {}
+      script: >
+        set -e
+
+        TAG="v1"
+
+        NODE_IMAGE="$(inputs.resources.image-node.url)"
+
+        buildah bud --tls-verify="false" --layers -f "./Dockerfile" -t
+        "$NODE_IMAGE:$TAG" .
+
+        buildah push --tls-verify="false" "$NODE_IMAGE:$TAG"
+        "docker://$NODE_IMAGE:$TAG"
+      securityContext:
+        privileged: true
+      volumeMounts:
+        - mountPath: /var/lib/containers
+          name: varlibcontainers
+      workingDir: /workspace/source/
+  volumes:
+    - emptyDir: {}
+      name: varlibcontainers
