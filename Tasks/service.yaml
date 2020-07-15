@@ -1,14 +1,8 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
-  creationTimestamp: '2020-07-14T19:40:52Z'
-  generation: 1
   name: cs-rest-backend-service
   namespace: tekton-pipelines
-  resourceVersion: '34124035'
-  selfLink: >-
-    /apis/tekton.dev/v1alpha1/namespaces/tekton-pipelines/tasks/cs-rest-backend-service
-  uid: 78e8da93-1401-4616-9df1-5d352ac39d11
 spec:
   steps:
     - image: 'quay.io/openshift/origin-cli:latest'

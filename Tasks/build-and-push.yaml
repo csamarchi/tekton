@@ -1,14 +1,8 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
-  creationTimestamp: '2020-07-13T18:56:28Z'
-  generation: 1
   name: build-and-push-cs-rest-backend
   namespace: tekton-pipelines
-  resourceVersion: '33212628'
-  selfLink: >-
-    /apis/tekton.dev/v1alpha1/namespaces/tekton-pipelines/tasks/build-and-push-cs-rest-backend
-  uid: c4a42a19-89f5-4206-a573-f965432319c2
 spec:
   inputs:
     resources:

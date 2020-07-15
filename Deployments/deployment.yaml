@@ -5,12 +5,7 @@ metadata:
     deployment.kubernetes.io/revision: '1'
     kubectl.kubernetes.io/last-applied-configuration: >
       {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"cs-rest-backend","version":"v1"},"name":"cs-node-rest-backend","namespace":"tekton-pipelines"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"cs-rest-backend","version":"v1"}},"template":{"metadata":{"labels":{"app":"cs-rest-backend","version":"v1"}},"spec":{"containers":[{"image":"image-registry.openshift-image-registry.svc:5000/tekton-pipelines/cs-rest-backend:v1","imagePullPolicy":"Always","name":"cs-rest-app","ports":[{"containerPort":9000,"protocol":"TCP"}],"resources":{}}],"restartPolicy":"Always"}}}}
-  selfLink: /apis/apps/v1/namespaces/tekton-pipelines/deployments/cs-node-rest-backend
-  resourceVersion: '34159797'
   name: cs-node-rest-backend
-  uid: cd44e665-8dae-455f-8d59-356e732fc3d7
-  creationTimestamp: '2020-07-14T20:37:41Z'
-  generation: 1
   namespace: tekton-pipelines
   labels:
     app: cs-rest-backend

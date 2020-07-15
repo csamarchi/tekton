@@ -1,14 +1,8 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
-  creationTimestamp: '2020-07-13T21:08:07Z'
-  generation: 2
   name: cs-rest-backend-deployment
   namespace: tekton-pipelines
-  resourceVersion: '33308923'
-  selfLink: >-
-    /apis/tekton.dev/v1alpha1/namespaces/tekton-pipelines/tasks/cs-rest-backend-deployment
-  uid: 0b8017e3-5c30-4bd3-abce-e0a6d293e5c3
 spec:
   inputs:
     resources:

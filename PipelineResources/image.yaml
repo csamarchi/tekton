@@ -1,14 +1,8 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  creationTimestamp: '2020-07-13T18:43:14Z'
-  generation: 1
   name: cs-rest-image
   namespace: tekton-pipelines
-  resourceVersion: '33204045'
-  selfLink: >-
-    /apis/tekton.dev/v1alpha1/namespaces/tekton-pipelines/pipelineresources/cs-rest-image
-  uid: a0ec983f-4a46-42ad-b925-cf906efa77c9
 spec:
   params:
     - name: url
